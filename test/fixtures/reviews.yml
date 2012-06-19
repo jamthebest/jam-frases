@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contenido: MyString
+  user_id: 1
+  perfil: 1
+
+two:
+  contenido: MyString
+  user_id: 1
+  perfil: 1

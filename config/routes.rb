@@ -1,74 +1,17 @@
 Frases::Application.routes.draw do
-  get "notifications/index"
 
-  get "notifications/create"
+  resources :sessions
+  resources :frases
+  resources :comments
+  resources :reviews
+  resources :notifications
+  resources :users
 
-  get "notifications/new"
-
-  get "notifications/update"
-
-  get "notifications/edit"
-
-  get "notifications/show"
-
-  get "notifications/destroy"
-
-  get "reviews/index"
-
-  get "reviews/create"
-
-  get "reviews/new"
-
-  get "reviews/update"
-
-  get "reviews/edit"
-
-  get "reviews/show"
-
-  get "reviews/destroy"
-
-  get "comments/index"
-
-  get "comments/create"
-
-  get "comments/new"
-
-  get "comments/update"
-
-  get "comments/edit"
-
-  get "comments/show"
-
-  get "comments/destroy"
-
-  get "users/index"
-
-  get "users/create"
-
-  get "users/new"
-
-  get "users/update"
-
-  get "users/edit"
-
-  get "users/show"
-
-  get "users/destroy"
-
-  get "tasks/index"
-
-  get "tasks/create"
-
-  get "tasks/new"
-
-  get "tasks/update"
-
-  get "tasks/edit"
-
-  get "tasks/show"
-
-  get "tasks/destroy"
-
+  root to: "home#index"
+  get 'signup', to: 'users#new', as: 'signup'
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  contenido: MyString
+  de: 1
+  para: 1
+  leido: false
+  tipo: 1
+
+two:
+  contenido: MyString
+  de: 1
+  para: 1
+  leido: false
+  tipo: 1

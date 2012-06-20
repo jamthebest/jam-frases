@@ -6,6 +6,7 @@ Frases::Application.routes.draw do
   resources :reviews
   resources :notifications
   resources :users
+  resources :busquedas
 
   root to: "home#index"
   get 'signup', to: 'users#new', as: 'signup'

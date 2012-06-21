@@ -50,7 +50,7 @@ class FrasesController < ApplicationController
 
   def update
     respond_to do |format|
-      if logged_in? && ((current_user.id == Book.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
+      if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
         @frase = Frase.find(params[:id])
         if @frase.update_attributes(params[:frase])
           format.html { redirect_to @frase, flash[:notice] = 'Frase Actualizada!' }
@@ -60,7 +60,7 @@ class FrasesController < ApplicationController
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       else
-        if !logged_in? || (current_user.id != Book.find(params[:id]).user_id)
+        if !logged_in? || (current_user.id != Frase.find(params[:id]).user_id)
           format.html { redirect_to login_path, flash[:error] = "No tienes Permiso para editar esta Frase!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
@@ -73,12 +73,12 @@ class FrasesController < ApplicationController
 
   def edit
     respond_to do |format|
-      if logged_in? && ((current_user.id == Book.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
+      if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
         @frase = Frase.find(params[:id])
         format.html
         format.json { render json: @frase }
       else
-        if !logged_in? || (current_user.id != Book.find(params[:id]).user_id)
+        if !logged_in? || (current_user.id != Frase.find(params[:id]).user_id)
           format.html { redirect_to login_path, flash[:error] = "No tienes Permiso para editar esta Frase!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
@@ -99,7 +99,7 @@ class FrasesController < ApplicationController
 
   def destroy
     respond_to do |format|
-      if logged_in? && ((current_user.id == Book.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
+      if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
         Frase.find(params[:id]).try(:delete)
         format.html { redirect_to frases_path }
         format.json { head :no_content }

@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    if logged_in? && (current_user.tipo.eql? "Bloqueado")
+    if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @notifications = Notification.where para: current_user.id
       respond_to do |format|
         format.html
@@ -19,7 +19,7 @@ class NotificationsController < ApplicationController
 
   def show
     respond_to do |format|
-      if logged_in? && ((current_user.id == Notification.find(params[:id]).para && current_user.tipo.eql? "Bloqueado") || (current_user.tipo.eql? "Administrador"))
+      if logged_in? && ((current_user.id == Notification.find(params[:id]).para && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
         @notification = Notification.find(params[:id])
         @notification[:leido] = true
         if @notification.update_attributes(params[:notification])
@@ -46,7 +46,7 @@ class NotificationsController < ApplicationController
   end
 
   def create
-    if logged_in? && (current_user.tipo.eql? "Bloqueado")
+    if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @notification = Notification.new(params[:notification])
       @notification[:description] = params[:description]
       @notification[:para] = params[:para].to_i

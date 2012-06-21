@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
         @comment[:user_id] = current_user.id
         @comment[:frase_id] = params["frase_id"].to_i
         if @comment.save
-          format.html { redirect_to user_path(@comment.user_id) }
+          format.html { redirect_to user_path(@comment.frase_id) }
           format.json { render json: @comment, status: :created, location: @comment }
         else
           format.html { redirect_to root_url }
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
           format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para hacer esto!" }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         else
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to user_path(@comment.frase_id), flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end

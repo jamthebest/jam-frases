@@ -23,7 +23,7 @@ class FrasesController < ApplicationController
           format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para hacer esto!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to root_url, flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       end
@@ -41,7 +41,7 @@ class FrasesController < ApplicationController
           format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para hacer esto!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to root_url, flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       end
@@ -64,7 +64,7 @@ class FrasesController < ApplicationController
           format.html { redirect_to login_path, flash[:error] = "No tienes Permiso para editar esta Frase!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to root_url, flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       end
@@ -82,7 +82,7 @@ class FrasesController < ApplicationController
           format.html { redirect_to login_path, flash[:error] = "No tienes Permiso para editar esta Frase!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to root_url, flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       end
@@ -105,7 +105,7 @@ class FrasesController < ApplicationController
         format.json { head :no_content }
       else
         if logged_in? && (current_user.tipo.eql? "Bloqueado")
-          format.html { redirect_to login_path, flash[:error] = "Usuario Bloqueado por Administrador!" }
+          format.html { redirect_to root_url, flash[:error] = "Usuario Bloqueado por Administrador!" }
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         else
           format.html { redirect_to login_path, flash[:error] = "No tienes Permiso para eliminar esta Frase" }

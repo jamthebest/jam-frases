@@ -35,6 +35,7 @@ class NotificationsController < ApplicationController
           format.json { render json: @frase.errors, status: :unprocessable_entity }
         end
       end
+    end
   end
 
   def new

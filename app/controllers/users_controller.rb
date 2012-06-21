@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         format.json { render json: @user }
       end
     else
-      flash[:error] = "No puedes crear un usuario si estás autenticado!"
+      flash[:error] = "No puedes crear un usuario cuando estes autenticado!"
       redirect_to users_path
     end
   end
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
         end
       end
     else
-      flash[:error] = "No puedes crear un usuario si estás autenticado!"
+      flash[:error] = "No puedes crear un usuario cuando estes autenticado!"
       redirect_to users_path
     end
   end

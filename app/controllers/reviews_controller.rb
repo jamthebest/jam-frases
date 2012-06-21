@@ -84,7 +84,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if logged_in? && (current_user.tipo.eql? "Administrador")
         Review.find(params[:id]).try(:delete)
-        format.html { redirect_to frases_path }
+        format.html { redirect_to users_path }
         format.json { head :no_content }
       else
         format.html { redirect_to root_url, flash[:error] = "No tienes derechos de Administrador!" }

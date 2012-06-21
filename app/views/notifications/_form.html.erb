@@ -1,0 +1,12 @@
+<%= simple_form_for @notification, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :contenido %>
+  <%= f.input :de %>
+  <%= f.input :para %>
+  <%= f.input :leido %>
+  <%= f.input :tipo %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                notifications_path, :class => 'btn' %>
+  </div>
+<% end %>

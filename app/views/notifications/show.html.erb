@@ -1,2 +1,29 @@
-<h1>Notifications#show</h1>
-<p>Find me in app/views/notifications/show.html.erb</p>
+<%- model_class = @notification.class -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:contenido) %>:</strong></dt>
+  <dd><%= @notification.contenido %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:de) %>:</strong></dt>
+  <dd><%= @notification.de %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:para) %>:</strong></dt>
+  <dd><%= @notification.para %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:leido) %>:</strong></dt>
+  <dd><%= @notification.leido %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tipo) %>:</strong></dt>
+  <dd><%= @notification.tipo %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              notifications_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_notification_path(@notification), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              notification_path(@notification),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger' %>
+</div>

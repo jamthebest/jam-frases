@@ -1,6 +1,5 @@
-<%- model_class = @frase.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
-                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+<div class="autent">
+<h1 class="titulo"> Editar Frase </h1>
+<%= render 'form' %>
+<a class="btn btn-inverse" href=<%= frase_path(@frase) %>><i class="icon-arrow-left icon-white"></i> Atrás </a>
 </div>
-<%= render :partial => 'form' %>

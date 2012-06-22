@@ -21,11 +21,11 @@ class CommentsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      if logged_in? && !(current_user.tipo.eql? "Bloqueado")
-        @comment = Comment.create params[:comment]
-        @comment[:user_id] = current_user.id
-        @comment[:frase_id] = params["frase_id"].to_i
+    if logged_in? && !(current_user.tipo.eql? "Bloqueado")
+      @comment = Comment.create params[:comment]
+      @comment[:user_id] = current_user.id
+      @comment[:frase_id] = params["frase_id"].to_i
+      respond_to do |format|
         if @comment.save
           format.html { redirect_to user_path(@comment.frase_id) }
           format.json { render json: @comment, status: :created, location: @comment }
@@ -33,22 +33,22 @@ class CommentsController < ApplicationController
           format.html { redirect_to root_url }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
+      end
+    else
+      if !logged_in?
+        flash[:error] = "Necesitas Autenticarte para hacer esto!"
+        redirect_to login_path
       else
-        if !logged_in?
-          format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para hacer esto!" }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        else
-          format.html { redirect_to user_path(@comment.frase_id), flash[:error] = "Usuario Bloqueado por Administrador!" }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
-        end
+        flash[:error] = "Usuario Bloqueado por Administrador!"
+        redirect_to user_path(@comment.frase_id)
       end
     end
   end
 
   def update
-    respond_to do |format|
-      if logged_in? && (current_user.tipo.eql? "Administrador")
-        @comment = Comment.find(params[:id])
+    if logged_in? && (current_user.tipo.eql? "Administrador")
+      @comment = Comment.find(params[:id])
+      respond_to do |format|
         if @comment.update_attributes(params[:comment])
           format.html { redirect_to @comment, flash[:notice] = 'Comentario Actualizado!' }
           format.json { render json: @comment, status: :created, location: @comment }
@@ -56,10 +56,10 @@ class CommentsController < ApplicationController
           format.html { render action: "edit" }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { redirect_to root_url, flash[:error] = "No tienes derechos de Administrador!" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
+    else
+      flash[:error] = "No tienes derechos de Administrador!"
+      redirect_to root_url
     end
   end
 

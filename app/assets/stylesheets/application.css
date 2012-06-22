@@ -1,13 +1,129 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
-*/
+body {
+	font-family: times,arial, helvetica,sans-serif;
+	font-size: 24px;
+	line-height:1.4em;
+	background-color:#DCC8B0;
+	margin:0;
+	padding:0;
+}
+
+/*Comienza Aplication/Layouts*/
+.ul rig{
+	float: right;
+}
+
+/*Home*/
+
+div.principal{
+	margin: 120px 0px 0px 45px;
+	padding: 0px 0px 0px 110px;
+}
+
+div.texto{
+	margin-right: 200px;
+	float: right;
+	border-left: 1px solid #B6B6B6;
+	padding-left: 40px;
+}
+
+b{ 	font-size: 14px	}
+p{ 	text-align: justify;	}
+h1{ 	font-size: 48px; text-align: center; }
+
+div#content1{
+	margin-top: 22px;
+	padding-left: 200px;
+}
+
+div.icono{
+	background-image:url(Jam-2.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 200px;
+	height: 200px;
+}
+
+/*Book - show*/
+
+div.arriba,div.abajo,div.centro{
+	background-repeat: no-repeat;
+	background-position: center top;
+	font-size: 130%;
+	text-align:center;
+	border: 0px solid black;
+}
+div.arriba{
+	background-image:url(arriba.jpg);
+	padding-top: 120px;
+	margin-left: 22px;
+}
+div.centro{
+	background-image:url(Body.jpg);
+	background-repeat: repeat-y;
+	margin-top: -10px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	margin-left: 37px;
+
+}
+div.abajo{
+	background-image:url(abajo.jpg);
+	background-position:center bottom;
+	height: 120px;
+	margin-top: -48px;
+}
+
+p.centro{
+	text-align:center;
+}
+
+/*User - show*/
+
+div.user{
+	font-size: 120%;
+}
+
+/*Estos metodos sirven para User - Notificaiones y Books*/
+h1.titulo{ padding: 15px 220px 8px 0px	}
+
+div.inicio{
+	margin-top: 0px;
+	padding: 42px 0% 10px 13%;
+	background-image:url(inicio.jpg);
+}
+div.tabla{
+	background-image:url(cuerpo.jpg);
+	padding: 19px 3% 0px 13%;
+}
+div.final{
+	margin-top: 0px;
+	padding: 0px 0% 62px 0%;
+	background-image:url(final.jpg);
+}
+
+/* Este metodo  sirve para Autenticación - Editar Usuario - Crear Usuario - Editar Libros,etc*/
+div.autent{
+	background-image:url(unico.jpg);
+	background-repeat: repeat-y;
+	padding: 10px 10% 10px 10%;
+}
+
+p.titulo {  	width: 600px;
+		text-align: right;
+		margin-top: 5%;
+		padding: 0% 10px 1% 0px;
+		font-size: 180%;	
+		background-color: #F2F2F2;
+		border-radius: 5px;
+	}
+
+/* Show de User*/
+hr{
+	width:  80%;
+	border: 1px solid gray;
+}
+
+div.noti{   float: right;
+	margin-right: 20%}
+
+div.lista{ 	margin-left: 15%;	}

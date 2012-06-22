@@ -18,22 +18,22 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      if logged_in? && ((current_user.id == Notification.find(params[:id]).para && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
-        @notification = Notification.find(params[:id])
-        @notification[:leido] = true
+    if logged_in? && ((current_user.id == Notification.find(params[:id]).para && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
+      @notification = Notification.find(params[:id])
+      @notification[:leido] = true
+      respond_to do |format|
         if @notification.update_attributes(params[:notification])
           format.html { redirect_to @notification }
           format.json { render json: @notification }
         end
+      end
+    else
+      if !(logged_in?)
+        flash[:error] = "Necesitas Autenticarte para ver las notificaciones!"
+        redirect_to login_path
       else
-        if !(logged_in?)
-          format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para ver las notificaciones!" }
-          format.json { render json: @frase.errors, status: :unprocessable_entity }
-        else
-          format.html { redirect_to user_path(current_user.id), flash[:error] = "Usuario Bloqueado por Administrador!" }
-          format.json { render json: @frase.errors, status: :unprocessable_entity }
-        end
+        flash[:error] = "Usuario Bloqueado por Administrador!"
+        redirect_to user_path(current_user.id)
       end
     end
   end

@@ -21,11 +21,11 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    respond_to do |format|
-      if logged_in? && !(current_user.tipo.eql? "Bloqueado")
-        @review = Review.create params[:review]
-        @review[:user_id] = current_user.id
-        @review[:perfil] = params["perfil"].to_i
+    if logged_in? && !(current_user.tipo.eql? "Bloqueado")
+      @review = Review.create params[:review]
+      @review[:user_id] = current_user.id
+      @review[:perfil] = params["perfil"].to_i
+      respond_to do |format|
         if @review.save
           format.html { redirect_to user_path(@review.perfil) }
           format.json { render json: @review, status: :created, location: @review }
@@ -33,22 +33,22 @@ class ReviewsController < ApplicationController
           format.html { redirect_to root_url }
           format.json { render json: @review.errors, status: :unprocessable_entity }
         end
+      end
+    else
+      if !logged_in?
+        flash[:error] = "Necesitas Autenticarte para hacer esto!"
+        redirect_to login_path
       else
-        if !logged_in?
-          format.html { redirect_to login_path, flash[:error] = "Necesitas Autenticarte para hacer esto!" }
-          format.json { render json: @review.errors, status: :unprocessable_entity }
-        else
-          format.html { redirect_to user_path(@review.perfil), flash[:error] = "Usuario Bloqueado por Administrador!" }
-          format.json { render json: @review.errors, status: :unprocessable_entity }
-        end
+        flash[:error] = "Usuario Bloqueado por Administrador!"
+        redirect_to user_path(@review.perfil)
       end
     end
   end
 
   def update
-    respond_to do |format|
-      if logged_in? && (current_user.tipo.eql? "Administrador")
-        @review = Review.find(params[:id])
+    if logged_in? && (current_user.tipo.eql? "Administrador")
+      @review = Review.find(params[:id])
+      respond_to do |format|
         if @review.update_attributes(params[:review])
           format.html { redirect_to @review, flash[:notice] = 'Comentario Actualizado!' }
           format.json { render json: @review, status: :created, location: @review }
@@ -56,10 +56,10 @@ class ReviewsController < ApplicationController
           format.html { render action: "edit" }
           format.json { render json: @review.errors, status: :unprocessable_entity }
         end
-      else
-        format.html { redirect_to root_url, flash[:error] = "No tienes derechos de Administrador!" }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
+    else
+      flash[:error] = "No tienes derechos de Administrador!"
+      redirect_to root_url
     end
   end
 

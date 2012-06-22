@@ -1,14 +1,17 @@
-<%= simple_form_for @user, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :username %>
-  <%= f.input :email %>
+<%= simple_form_for(@user) do |f| %>
   <%= f.input :nombre %>
   <%= f.input :apellido %>
-  <%= f.input :fecha_nac %>
-  <%= f.input :password_digest %>
-  <%= f.input :tipo %>
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                users_path, :class => 'btn' %>
-  </div>
+  <%= f.input :fecha_nac, :label =>'Fecha de Nacimiento', :as => :date, :start_year => Date.today.year - 100,
+          :end_year => Date.today.year, 
+          :order => [:day, :month, :year] %>
+  <%= f.input :username, :placeholder => 'Nombre para Identificarte'%>
+  <%= f.input :email, :placeholder => 'Tu correo electrónico'%>
+  <%= f.input :password, :placeholder => 'Contraseña'%>
+  <%= f.input :password_confirmation, :placeholder => 'Ingresa la contraseña nuevamente' %>
+  <% if logged_in? && (current_user.tipo "Administrador") %>
+    <%= f.input :tipo, :collection => [Administrador, Usuario, Bloqueado] %>
+  <% else %>
+    <%= hidden_field_tag(:tipo, "Usuario") %>
+  <% end %>
+  <input class="btn btn-primary" type="submit" value="Listo!">
 <% end %>

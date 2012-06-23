@@ -8,8 +8,8 @@
   <%= f.input :email, :placeholder => 'Tu correo electrónico'%>
   <%= f.input :password, :placeholder => 'Contraseña'%>
   <%= f.input :password_confirmation, :placeholder => 'Ingresa la contraseña nuevamente' %>
-  <% if logged_in? && (current_user.tipo "Administrador") %>
-    <%= f.input :tipo, :collection => [Administrador, Usuario, Bloqueado] %>
+  <% if logged_in? && (current_user.tipo.eql? "Administrador") %>
+    <%= f.input :tipo %>
   <% else %>
     <%= hidden_field_tag(:tipo, "Usuario") %>
   <% end %>

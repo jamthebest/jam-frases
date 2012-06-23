@@ -20,7 +20,7 @@
   <div class="lista">
     <ol>
       <%(Frase.where user_id: @user.id).each do |frase|%>
-        <li><h4><strong><%= link_to "#{frase.titulo}", frase_path(frase.id) %></strong></h4></li><br>
+        <li><h4><strong><%= link_to "#{frase.descripcion.slice(0..40)}", frase_path(frase.id) %></strong></h4></li><br>
       <% end %>
     </ol>
   </div>

@@ -20,7 +20,7 @@ div.principal{
 }
 
 div.texto{
-	margin-right: 200px;
+	margin-right: 185px;
 	float: right;
 	border-left: 1px solid #B6B6B6;
 	padding-left: 40px;
@@ -36,14 +36,14 @@ div#content1{
 }
 
 div.icono{
-	background-image:url(Jam-2.png);
+	background-image:url(Jam-4.png);
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center right;
 	width: 200px;
 	height: 200px;
 }
 
-/*Book - show*/
+/*Frase - show*/
 
 div.arriba,div.abajo,div.centro{
 	background-repeat: no-repeat;
@@ -83,21 +83,21 @@ div.user{
 	font-size: 120%;
 }
 
-/*Estos metodos sirven para User - Notificaiones y Books*/
+/*Estos metodos sirven para User - Notificaiones y Frases*/
 h1.titulo{ padding: 15px 220px 8px 0px	}
 
 div.inicio{
 	margin-top: 0px;
-	padding: 42px 0% 10px 13%;
+	padding: 42px 0px 10px 130px;
 	background-image:url(inicio.jpg);
 }
 div.tabla{
 	background-image:url(cuerpo.jpg);
-	padding: 19px 3% 0px 13%;
+	padding: 20px 20px 0px 130px;
 }
 div.final{
 	margin-top: 0px;
-	padding: 0px 0% 62px 0%;
+	padding: 0px 0px 62px 0px;
 	background-image:url(final.jpg);
 }
 
@@ -105,14 +105,14 @@ div.final{
 div.autent{
 	background-image:url(unico.jpg);
 	background-repeat: repeat-y;
-	padding: 10px 10% 10px 10%;
+	padding: 10px 60px 10px 80px;
 }
 
 p.titulo {  	width: 600px;
 		text-align: right;
-		margin-top: 5%;
-		padding: 0% 10px 1% 0px;
-		font-size: 180%;	
+		margin-top: 40px;
+		padding: 0px 35px 15px 0px;
+		font-size: 35px;
 		background-color: #F2F2F2;
 		border-radius: 5px;
 	}

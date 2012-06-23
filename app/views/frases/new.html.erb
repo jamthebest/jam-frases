@@ -1,6 +1,17 @@
+<% if @frase.errors.any? %>
+<div class="alert alert-error">
+  <a class="close" data-dismiss="alert">×</a>
+	<% if @frase.errors.any? %>
+	  <div id="error_explanation">
+	      <% @frase.errors.full_messages.each do |msg| %>
+	        <%= msg %>
+	      <% end %>
+	  </div>
+	<% end %>
+</div>
+<% end %>
 <div class="autent">
-
-<h1 class="titulo"> Nueva Frase </h1>
-<%= render 'form'%> 
-<a class="btn btn-inverse" href=<%=frases_path%>><i class="icon-arrow-left icon-white"></i> Ver Frases </a>
+	<h1 class="titulo"> Nueva Frase </h1>
+	<%= render 'form'%> 
+	<a class="btn btn-inverse" href=<%=frases_path%>><i class="icon-arrow-left icon-white"></i> Ver Frases </a>
 </div>

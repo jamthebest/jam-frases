@@ -19,7 +19,7 @@
     <tr>
       <td><%= frase.id %></td>
       <td><%= frase.autor %></td>
-      <td><%= link_to Frase.find(frase.id).descripcion.slide(0..30) %></td>
+      <td><%= Frase.find(frase.id).descripcion.slice(0..40) %></td>
       <td><%= link_to "#{User.find(frase.user_id).username}", user_path(frase.user_id) %></td>
       <td><a class="btn btn-info" href=<%=frase_path(frase.id)%>><i class="icon-eye-open icon-black"></i> Mostrar </a></td>
     </tr>

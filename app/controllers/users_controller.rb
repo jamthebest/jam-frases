@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   def create
     if !(logged_in?)
       @user = User.new(params[:user])
-      @user[:reputacion] = 10
       respond_to do |format|
        if @user.save
           session[:user_id] = @user.id
@@ -45,7 +44,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = "No puedes crear un usuario cuando estes autenticado!"
-      redirect_to users_path
+      redirect_to user_path(@user.id)
     end
   end
 
@@ -55,7 +54,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if (current_user.id == User.find(params[:id])) || (current_user.tipo.eql? "Administrador")
+    if !(current_user.tipo.eql? "Administrador")
+      @user[:tipo] = params[:tipo]
+    end
+    if (current_user.id == @user.id) || (current_user.tipo.eql? "Administrador")
       respond_to do |format|
         if @user.update_attributes(params[:user])
           format.html { redirect_to @user, notice: 'Usuario Actualizado!' }

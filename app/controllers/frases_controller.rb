@@ -9,15 +9,13 @@ class FrasesController < ApplicationController
 
   def create
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
-      @frase = Frase.new(params[:id])
-      respond_to do |format|
-        if @frase.save
-          format.html { redirect_to @frase, flash[:notice] = 'Frase Agregada!' }
-          format.json { render json: @frase, status: :created, location: @frase }
-        else
-          format.html { render action: "new" }
-          format.json { render json: @frase.errors, status: :unprocessable_entity }
-        end
+      @frase = Frase.new(params[:frase])
+      @frase[:user_id] = current_user.id
+      if @frase.save
+        flash[:notice] = 'Frase Agregada!'
+        redirect_to @frase
+      else
+        render action: "new"
       end
     else
       if !logged_in?
@@ -90,6 +88,7 @@ class FrasesController < ApplicationController
 
   def show
     @frase = Frase.find(params[:id])
+    @comment = Comment.new
     respond_to do |format|
       format.html
       format.json { render json: @frase }

@@ -1,9 +1,8 @@
 <%= simple_form_for @frase, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :autor %>
-  <%= f.input :descripcion %>
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                frases_path, :class => 'btn' %>
-  </div>
+  <%= f.input :autor %><br>
+  <%= f.input :descripcion, :label => 'Frase', :as => :text, :input_html => { :rows => 7, :class => 'resizable' } %>
+  <br>
+  <%= f.button :submit, :label => 'Listo' , :class => 'btn btn-primary'%>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                frases_path, :class => 'btn btn-danger' %>  
 <% end %>

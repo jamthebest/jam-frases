@@ -2,9 +2,9 @@
 <div class="arriba"></div>
 <div class="centro">
 <p>
-  <p class="centro"><strong>Subido Por:</strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p>
-  <p class="centro"><strong>Autor:</strong> <%=@frase.autor%></p>
-  <p class="centro"><strong>Frase:</strong> <%= @frase.descripcion %></p>
+  <p class="centro"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p>
+  <p class="centro"><strong>Autor: </strong> <%=@frase.autor%></p>
+  <p class="centro"><strong>Frase: </strong> <%= @frase.descripcion %></p>
   <% if logged_in? && (current_user.id == @frase.user_id || (current_user.tipo.eql? "Administrador")) %>
     <a class="btn btn-danger" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
     <a class="btn btn-success" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>

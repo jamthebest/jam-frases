@@ -10,7 +10,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag "bootstrap/css/bootstrap.css"%>
-  <link rel="shortcut icon" href="http://www.iconj.com/ico/n/o/nov12haaua.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="http://www.iconj.com/ico/m/v/mvxyi0eqxp.ico" type="image/x-icon" />
 </head>
 <body>
 	<div class="navbar">
@@ -21,14 +21,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="/">JAM-Frases</a>
+        <a class="brand" href="/">JAM-Exprésate</a>
         <div class="nav-collapse">
           <ul class="nav pull-right">
           	<% unless logged_in? %>
   						<li><%= link_to "Nueva Cuenta", signup_path %></li>
   						<li><%= link_to "Autenticar", login_path %></li>
 						<% else %>
-						  <li><%= current_user.username %></li>
+						  <li><%= link_to current_user.username, user_path(current_user.id) %></li>
 						  <li><%= link_to "Salir", logout_path %></li>
 						<%end%>
           </ul>
@@ -50,7 +50,7 @@
         <%= flash[:error] %>
       </div>
     <% end %>
-
     <%= yield %>
+  </div>
 </body>
 </html>

@@ -6,13 +6,12 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>N°</th>
+        <th>#</th>
         <th>Email</th>
         <th>Username</th>
         <th>Nombre</th>
         <th>Tipo</th>
         <th>Creación</th>
-        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -22,13 +21,12 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.email %></td>
-        <td><%= user.username %></td>
+        <td><%= link_to user.username, user_path(user) %></td>
         <td><%= user.nombre %> <%= user.apellido %></td>
         <td><%= user.tipo %></td>
-        <th><%= user.created_at %></th>
-        <td><a class="btn btn-info" href=<%=user_path(user)%>><i class="icon-eye-open icon-black"></i>  Mostrar </a></td>
+        <td><%= user.created_at.strftime("%d-%m-%Y") %></td>
         <td><a class="btn btn-success" href=<%=edit_user_path(user.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
-        <td><a class="btn btn-danger" data-confirm="Are you sure?" data-method="delete" href=<%=user_path(@user.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
+        <td><a class="btn btn-danger" data-confirm="Are you sure?" data-method="delete" href=<%=user_path(user.id)%>><i class="icon-trash icon-white"></i> Borrar </a></td>
       </tr>
     </tbody>
     <% end %>

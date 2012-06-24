@@ -1,26 +1,20 @@
 <%- model_class = @notification.class -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1>Notificación</h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:contenido) %>:</strong></dt>
-  <dd><%= @notification.contenido %></dd>
   <dt><strong><%= model_class.human_attribute_name(:de) %>:</strong></dt>
-  <dd><%= @notification.de %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:para) %>:</strong></dt>
-  <dd><%= @notification.para %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:leido) %>:</strong></dt>
-  <dd><%= @notification.leido %></dd>
+  <dd><%= link_to User.find(@notification.de).username, user_path(@notification.de) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:tipo) %>:</strong></dt>
-  <dd><%= @notification.tipo %></dd>
+  <dd><%= @notification.tipo==1 ? "Reporte" : (@notification.tipo==2 ? "Notificación" : "Nada" ) %></dd>
+  <dt><strong>Contenido:</strong></dt>
+  <dd><%= @notification.contenido %></dd>
+  
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              notifications_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_notification_path(@notification), :class => 'btn' %>
+  <a class="btn btn-inverse" href=<%=notifications_path%>><i class="icon-arrow-left icon-white"></i> Atrás </a>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               notification_path(@notification),
               :method => 'delete',

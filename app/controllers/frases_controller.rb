@@ -1,6 +1,7 @@
 class FrasesController < ApplicationController
   def index
     @frases = Frase.all
+    @notification = Notification.new
     respond_to do |format|
       format.html
       format.json { render json: @frase }
@@ -89,6 +90,7 @@ class FrasesController < ApplicationController
   def show
     @frase = Frase.find(params[:id])
     @comment = Comment.new
+    @notification = Notification.new
     respond_to do |format|
       format.html
       format.json { render json: @frase }

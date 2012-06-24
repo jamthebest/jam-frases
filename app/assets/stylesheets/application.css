@@ -6,7 +6,6 @@ body {
 	margin:0;
 	padding:0;
 }
-
 /*Comienza Aplication/Layouts*/
 .ul rig{
 	float: right;
@@ -61,7 +60,7 @@ div.centro{
 	background-image:url(Body.jpg);
 	background-repeat: repeat-y;
 	margin-top: -10px;
-	padding-bottom: 20px;
+	padding-bottom: 50px;
 	padding-top: 20px;
 	margin-left: 37px;
 
@@ -71,6 +70,25 @@ div.abajo{
 	background-position:center bottom;
 	height: 120px;
 	margin-top: -48px;
+}
+
+#frase{
+	font-family: 'Bilbo Swash Caps', cursive;
+	font-size: 40px;
+	margin: 20px 0px;
+}
+
+#autor{
+	font-family: 'Bad Script', cursive;
+	margin-left: 350px
+}
+
+.review{
+	font-family: 'Berkshire Swash', cursive;
+}
+
+#cont{
+	font-family: 'Fredericka the Great', cursive;
 }
 
 p.centro{
@@ -101,6 +119,16 @@ div.final{
 	background-image:url(final.jpg);
 }
 
+dt{
+	font-size: 30px;
+	padding: 15px 0px;
+}
+
+dd{
+	font-size: 25px;
+	padding: 15px 0px;
+}
+
 /* Este metodo  sirve para Autenticación - Editar Usuario - Crear Usuario - Editar Libros,etc*/
 div.autent{
 	background-image:url(unico.jpg);
@@ -108,14 +136,16 @@ div.autent{
 	padding: 10px 60px 10px 80px;
 }
 
-p.titulo {  	width: 600px;
-		text-align: right;
-		margin-top: 40px;
-		padding: 0px 35px 15px 0px;
-		font-size: 35px;
-		background-color: #F2F2F2;
-		border-radius: 5px;
-	}
+p.titulo {  	
+	width: 600px;
+	text-align: center;
+	margin-top: 40px;
+	padding: 0px 40px 15px 0px;
+	font-size: 40px;
+	background-color: #F2F2F2;
+	border-radius: 5px;
+	font-family: 'Bilbo Swash Caps', cursive;
+}
 
 /* Show de User*/
 hr{
@@ -124,6 +154,24 @@ hr{
 }
 
 div.noti{   float: right;
-	margin-right: 20%}
+	margin-right: 150px
+}
 
-div.lista{ 	margin-left: 15%;	}
+div.lista{ 	
+	margin-left: 115px;
+	font-family: 'Berkshire Swash', cursive;
+}
+
+.fracont{
+	font-size: 18px;
+}
+
+div.infor{
+	font-size: 25px;
+	font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.datos{
+	font-size: 20px;
+	font-family: 'Frijole', cursive;
+}

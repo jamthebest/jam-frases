@@ -10,13 +10,13 @@
   <%end%><br><br>
 </div>
 
-<div class="libros">
 <% if logged_in? && (current_user.id == @user.id || (current_user.tipo.eql? "Administrador")) %>
+<div class="libros">
     <br>
     <a class="btn btn-danger" data-confirm="Are you sure?" data-method="delete" href=<%=user_path(@user.id)%>><i class="icon-trash icon-white"></i> Borrar Usuario </a>
     <a class="btn btn-success" href=<%=edit_user_path(@user.id)%>><i class="icon-pencil icon-white"></i> Editar Perfil </a>
     <br><hr>
-  <p><h3>Mis Frases:</h3></p>
+  <p><h3 id="cont">Mis Frases:</h3></p>
   <div class="lista">
     <ol>
       <%(Frase.where user_id: @user.id).each do |frase|%>
@@ -25,39 +25,49 @@
     </ol>
   </div>
   <br>
-  <a class="btn btn-inverse" href=<%=root_url%>><i class="icon-arrow-left icon-white"></i> Inicio </a>
-  <a class="btn btn-primary" href=<%=new_frase_path%>> Agregar Frase </a><br><br>
+</div>
 <%end%>
 <hr>
-</div>
-
+<div class="infor">
 <% if !current_user || current_user.id != @user.id %></p>
-  <p><strong>Nombre:</strong> <%=@user.nombre%> <%=@user.apellido%></p>
-    <p><strong>Fecha de Nacimiento:</strong> <%=@user.fecha_nac.strftime("%d-%m-%Y")%></p>
-    <p><strong>E-mail:</strong> <%=@user.email%><hr>
-    <p><h3>Frases:</h3></p>
-    <div class="lista"> 
-      <ol>
-        <%(Frase.where user_id: @user.id).each do |frase|%>
-          <li><h4><strong><%= link_to "#{frase.titulo}", frase_path(frase.id) %></strong></h4></li><br>
-        <% end %>
-      </ol>
-    </div><hr>
+  <p><strong class="datos">Nombre:</strong> <%=@user.nombre%> <%=@user.apellido%></p>
+  <p><strong class="datos">Fecha de Nacimiento:</strong> <%=@user.fecha_nac.strftime("%d-%m-%Y")%></p>
+  <p><strong class="datos">E-mail:</strong> <%=@user.email%><hr>
+  <p><h3 id="cont">Frases:</h3></p>
+  <div class="lista"> 
+    <ol>
+      <%(Frase.where user_id: @user.id).each do |frase|%>
+        <li><h4 class="fracont"><strong><%= link_to "#{frase.descripcion}", frase_path(frase.id) %></strong></h4></li><br>
+      <% end %>
+    </ol>
+  </div><hr>
+<% end %>
+
+</div>
+<a class="btn btn-inverse" href=<%=root_url%>><i class="icon-home icon-white"></i> Inicio </a>
+<a class="btn btn-primary" href=<%=new_frase_path%>> Agregar Frase </a><br><br>
   <br><%= simple_form_for @review do |f| %>
     <b><%= "Agregue un comentario acerca de este usuario!" %></b>
     <br><br><textarea class="text optional" cols="10" id="comentario_content" name="review[contenido]" rows="4"></textarea><br>
     <%= hidden_field_tag(:perfil, @user.id) %>
     <input class="btn btn-primary" type="submit" value="Comentar">
   <% end %>
-<% end %>
 
-<div class="cometar">
-  <br><h3>Comentarios:</h3>
+<div class="review">
+  <br><h3 id="cont">Comentarios:</h3>
   <%(Review.where perfil: @user.id).sort{|x,y| x.created_at <=> y.created_at}.each do |comment|%>
     <div class="lista">
       <ol id="comment_list">
         <p><h4><%= link_to "#{User.find(comment.user_id).username}", user_path(comment.user_id) %> escribió</h4></p>
         <p><h4><%= comment.contenido %></h4></p>
+        <div class="reporte" >
+          <%= simple_form_for @notification do |f| %>
+            <%= hidden_field_tag(:para, 1) %>
+            <%= hidden_field_tag(:tipo, 1) %>
+            <%= hidden_field_tag(:contenido, ("Comentario Indevido : " + comment.contenido + "\nUsuario: " + User.find(comment.user_id).username + "\nPara: " + @user.username).to_s) %>
+            <input class="btn btn-primary" type="submit" value="Reportar">
+          <% end %>
+        </div>
       </ol>
     </div>
   <% end %>

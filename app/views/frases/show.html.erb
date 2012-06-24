@@ -2,9 +2,9 @@
 <div class="arriba"></div>
 <div class="centro">
 <p>
-  <p class="centro"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p>
-  <p class="centro"><strong>Autor: </strong> <%=@frase.autor%></p>
-  <p class="centro"><strong>Frase: </strong> <%= @frase.descripcion %></p>
+  <p class="centro"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p><br>
+  <p class="centro" id="frase" ><strong><%= "\"" + @frase.descripcion + " \""%></strong></p>
+  <p class="centro" id="autor"><strong> <%=@frase.autor%></strong></p><br>
   <% if logged_in? && (current_user.id == @frase.user_id || (current_user.tipo.eql? "Administrador")) %>
     <a class="btn btn-danger" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
     <a class="btn btn-success" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
@@ -21,7 +21,7 @@
 </p>
 <a class="btn btn-inverse" href=<%=frases_path%>><i class="icon-arrow-left icon-white"></i> Ver Frases </a><br>
 <div class="review">
-  <br> <h3>Comentarios</h3><br>
+  <br> <h3 id="cont">Comentarios</h3><br>
   <%(Comment.where frase_id: @frase.id).sort{|x,y| x.created_at <=> y.created_at}.each do |comment|%>
     <ul id="review_list">
       <h4><%= link_to "#{User.find(comment.user_id).username}", user_path(comment.user_id) %> escribió:</h4>

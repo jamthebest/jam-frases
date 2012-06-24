@@ -23,7 +23,7 @@ class NotificationsController < ApplicationController
       @notification[:leido] = true
       respond_to do |format|
         if @notification.update_attributes(params[:notification])
-          format.html { redirect_to @notification }
+          format.html
           format.json { render json: @notification }
         end
       end
@@ -39,17 +39,22 @@ class NotificationsController < ApplicationController
   end
 
   def new
-    @notification = Notification.new
-    respond_to do |format|
-      format.html
-      format.json { render json: @notifications }
+    if logged_in? && (current_user.tipo.eql? "Administrador")
+      @notification = Notification.new
+      respond_to do |format|
+        format.html
+        format.json { render json: @notifications }
+      end
+    else
+      flash[:error] = "No tienes derecho de Administrador."
+      redirect_to notifications_path
     end
   end
 
   def create
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @notification = Notification.new(params[:notification])
-      @notification[:description] = params[:description]
+      @notification[:contenido] = params[:contenido].to_s
       @notification[:para] = params[:para].to_i
       @notification[:de] = current_user.id
       @notification[:tipo] = params[:tipo].to_i #Tipos: 1=>Reportar, 2=>Gustar, 3=>

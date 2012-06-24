@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
       @comment[:frase_id] = params["frase_id"].to_i
       respond_to do |format|
         if @comment.save
-          format.html { redirect_to user_path(@comment.frase_id) }
+          format.html { redirect_to frase_path(@comment.frase_id) }
           format.json { render json: @comment, status: :created, location: @comment }
         else
           format.html { redirect_to root_url }

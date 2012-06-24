@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @review = Review.new
+    @notification = Notification.new
     respond_to do |format|
       format.html
       format.json { render json: @user }

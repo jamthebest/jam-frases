@@ -1,44 +1,40 @@
-<%- model_class = Notification.new.class -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+<div class="inicio">
+  <h1 class="titulo">Notificaciones</h1><br>
 </div>
+
+<div class="tabla">
+<%- model_class = Notification.new.class -%>
+
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:contenido) %></th>
-      <th><%= model_class.human_attribute_name(:de) %></th>
-      <th><%= model_class.human_attribute_name(:para) %></th>
-      <th><%= model_class.human_attribute_name(:leido) %></th>
-      <th><%= model_class.human_attribute_name(:tipo) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th></th>
+      <th>Descripción</th>
+      <th>De</th>
+      <th>Fecha</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @notifications.each do |notification| %>
       <tr>
-        <td><%= link_to notification.id, notification_path(notification) %></td>
-        <td><%= notification.contenido %></td>
-        <td><%= notification.de %></td>
-        <td><%= notification.para %></td>
-        <td><%= notification.leido %></td>
-        <td><%= notification.tipo %></td>
-        <td><%=l notification.created_at %></td>
-        <td>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_notification_path(notification), :class => 'btn btn-mini' %>
+        <td><%= notification.tipo==1 ? "Reporte" : (notification.tipo==2 ? "Notificación" : "Nada" ) %></td>
+        <td><strong><%= (notification.contenido.slice(0..20) + (!notification.leido ? " (Nuevo)" : "" )) %></strong></td>
+        <td><%= link_to User.find(notification.de).username, user_path(notification.de) %></td>
+        <td><%= notification.created_at.strftime("%d-%m-%Y") %></td>
+        <td><a class="btn btn-info" href=<%=notification_path(notification.id)%>><i class="icon-search icon-white"></i> Ver </a>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       notification_path(notification),
                       :method => :delete,
-                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
-                      :class => 'btn btn-mini btn-danger' %>
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '¿Seguro?')),
+                      :class => 'btn btn-danger' %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to t('.new', :default => t("helpers.links.new")),
-            new_notification_path,
-            :class => 'btn btn-primary' %>
+<a class="btn btn-inverse" href=<%=user_path(current_user.id)%>><i class="icon-arrow-left icon-white"></i> Atrás </a>
+<a class="btn btn-primary" href=<%=new_frase_path%>> Agregar Frase </a><br>
+<br>
+</div>
+<div class="final"><br></div>

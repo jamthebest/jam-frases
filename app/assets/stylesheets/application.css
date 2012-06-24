@@ -19,10 +19,17 @@ div.principal{
 }
 
 div.texto{
+	font-family: 'Gentium Basic', serif;
+	font-size: 13px;
 	margin-right: 185px;
 	float: right;
 	border-left: 1px solid #B6B6B6;
 	padding-left: 40px;
+}
+
+.jam{
+	font-size: 35px;
+	font-family: 'Fredericka the Great', cursive;
 }
 
 b{ 	font-size: 14px	}

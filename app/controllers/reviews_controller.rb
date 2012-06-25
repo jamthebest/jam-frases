@@ -30,7 +30,8 @@ class ReviewsController < ApplicationController
           format.html { redirect_to user_path(@review.perfil) }
           format.json { render json: @review, status: :created, location: @review }
         else
-          format.html { redirect_to root_url }
+          flash[:error] = 'Debes Escribir un Comentario'
+          format.html { redirect_to user_path(@review.perfil) }
           format.json { render json: @review.errors, status: :unprocessable_entity }
         end
       end
@@ -40,7 +41,7 @@ class ReviewsController < ApplicationController
         redirect_to login_path
       else
         flash[:error] = "Usuario Bloqueado por Administrador!"
-        redirect_to user_path(@review.perfil)
+        redirect_to user_path(params[:perfil])
       end
     end
   end

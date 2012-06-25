@@ -30,7 +30,8 @@ class CommentsController < ApplicationController
           format.html { redirect_to frase_path(@comment.frase_id) }
           format.json { render json: @comment, status: :created, location: @comment }
         else
-          format.html { redirect_to root_url }
+          flash[:error] = 'Debes Escribir un Comentario'
+          format.html { redirect_to frase_path(@comment.frase_id) }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
         end
       end
@@ -40,7 +41,7 @@ class CommentsController < ApplicationController
         redirect_to login_path
       else
         flash[:error] = "Usuario Bloqueado por Administrador!"
-        redirect_to user_path(@comment.frase_id)
+        redirect_to frase_path(params[:frase_id])
       end
     end
   end

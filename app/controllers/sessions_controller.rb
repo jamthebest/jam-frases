@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user.id)
     else
       flash[:error] = "Username or password is invalid"
+      render action: "new"
     end
   end
 

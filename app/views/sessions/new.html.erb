@@ -1,3 +1,4 @@
+<div class="session">
 <%= form_tag sessions_path do %>
   <div class="field">
     <%= label_tag :username %>
@@ -9,5 +10,6 @@
     <%= password_field_tag :password %>
   </div>
 
-  <div class="actions"><%= submit_tag "Log In" %>
+  <div class="actions" id="button"><%= submit_tag "Autenticar", :id=>"button" %></div>
 <% end %>
+</div>

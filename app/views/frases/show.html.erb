@@ -2,24 +2,24 @@
 <div class="arriba"></div>
 <div class="centro">
 <p>
-  <p class="centro"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p><br>
+  <p class="centro" id="subido"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p><br>
   <p class="centro" id="frase" ><strong><%= "\"" + @frase.descripcion + " \""%></strong></p>
   <p class="centro" id="autor"><strong> <%=@frase.autor%></strong></p><br>
   <% if logged_in? && (current_user.id == @frase.user_id || (current_user.tipo.eql? "Administrador")) %>
-    <a class="btn btn-danger" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
-    <a class="btn btn-success" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
+    <a class="btn btn-danger" id="button" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
+    <a class="btn btn-success" id="button" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
   <% end %>
 
   <p>
     <%= simple_form_for @comment do |f| %>
       <%= "Comente Esta Frase XD" %>
-      <br><br><textarea class="text optional" cols="10" id="comentario_content" name="comment[contenido]" rows="4"></textarea><br>
+      <br><br><textarea class="text optional" cols="10" id="comentario_content" name="comment[contenido]" rows="4" placeholder="Escribe un comentario..."></textarea><br>
       <%= hidden_field_tag(:frase_id, @frase.id) %>
-      <input class="btn btn-primary" type="submit" value="Comentar">
+      <input class="btn btn-primary" id="button" type="submit" value="Comentar">
     <% end %>
   </p>
 </p>
-<a class="btn btn-inverse" href=<%=frases_path%>><i class="icon-arrow-left icon-white"></i> Ver Frases </a><br>
+<a class="btn btn-inverse" id="button" href=<%=frases_path%>><i class="icon-arrow-left icon-white"></i> Ver Expresiones </a><br>
 <div class="review">
   <br> <h3 id="cont">Comentarios</h3><br>
   <%(Comment.where frase_id: @frase.id).sort{|x,y| x.created_at <=> y.created_at}.each do |comment|%>

@@ -6,6 +6,22 @@ body {
 	margin:0;
 	padding:0;
 }
+
+.session{
+	font-family: 'Gentium Basic', serif;
+}
+
+.brand{
+	font-family: 'Fredericka the Great', cursive;
+	font-weight: bolder;
+}
+
+#bar{
+	font-family: 'Frijole', cursive;
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-size: 15px;
+}
+
 /*Comienza Aplication/Layouts*/
 .ul rig{
 	float: right;
@@ -67,10 +83,8 @@ div.centro{
 	background-image:url(Body.jpg);
 	background-repeat: repeat-y;
 	margin-top: -10px;
-	padding-bottom: 50px;
-	padding-top: 20px;
+	padding: 20px 170px 50px 160px;
 	margin-left: 37px;
-
 }
 div.abajo{
 	background-image:url(abajo.jpg);
@@ -79,10 +93,15 @@ div.abajo{
 	margin-top: -48px;
 }
 
+#subido{
+	font-family: 'Berkshire Swash', cursive;
+}
+
 #frase{
 	font-family: 'Bilbo Swash Caps', cursive;
 	font-size: 40px;
 	margin: 20px 0px;
+	line-height: 35pt;
 }
 
 #autor{
@@ -109,7 +128,10 @@ div.user{
 }
 
 /*Estos metodos sirven para User - Notificaiones y Frases*/
-h1.titulo{ padding: 15px 220px 8px 0px	}
+h1.titulo{
+	font-family: 'Fredericka the Great', cursive;
+	padding: 15px 200px 8px 0px
+}
 
 div.inicio{
 	margin-top: 0px;
@@ -119,6 +141,7 @@ div.inicio{
 div.tabla{
 	background-image:url(cuerpo.jpg);
 	padding: 20px 20px 0px 130px;
+	font-family: 'Berkshire Swash', cursive;
 }
 div.final{
 	margin-top: 0px;
@@ -154,6 +177,10 @@ p.titulo {
 	font-family: 'Bilbo Swash Caps', cursive;
 }
 
+.userform, .fraseform{
+	font-family: 'Berkshire Swash', cursive;
+}
+
 /* Show de User*/
 hr{
 	width:  80%;
@@ -181,4 +208,11 @@ div.infor{
 .datos{
 	font-size: 20px;
 	font-family: 'Frijole', cursive;
+}
+
+/* Botones */
+#button{
+	font-family: 'Love Ya Like A Sister', cursive;
+	font-family: 'Berkshire Swash', cursive;
+	font-size: 15px
 }

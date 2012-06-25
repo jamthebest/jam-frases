@@ -1,8 +1,10 @@
+<div class="fraseform">
 <%= simple_form_for @frase, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :autor %><br>
-  <%= f.input :descripcion, :label => 'Frase', :as => :text, :input_html => { :rows => 7, :class => 'resizable' } %>
+  <%= f.input :autor, :placeholder => '¿Quien lo dijo?' %><br>
+  <%= f.input :descripcion, :label => 'Frase', :as => :text, :input_html => { :rows => 7, :class => 'resizable' }, :placeholder => 'Describe lo que quieres Expresar' %>
   <br>
-  <%= f.button :submit, :label => 'Listo' , :class => 'btn btn-primary'%>
+  <%= f.button :submit, :label => 'Listo' , :class => 'btn btn-primary', :id => "button"%>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                frases_path, :class => 'btn btn-danger' %>  
+                frases_path, :class => 'btn btn-danger', :id => "button" %>  
 <% end %>
+</div>

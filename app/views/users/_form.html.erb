@@ -1,3 +1,4 @@
+<div class="userform">
 <%= simple_form_for(@user) do |f| %>
   <%= f.input :nombre %>
   <%= f.input :apellido %>
@@ -13,5 +14,6 @@
   <% else %>
     <%= hidden_field_tag(:tipo, "Usuario") %>
   <% end %>
-  <input class="btn btn-primary" type="submit" value="Listo!">
+  <input class="btn btn-primary" id="button" type="submit" value="Listo!">
 <% end %>
+</div>

@@ -25,15 +25,15 @@
         <td><%= user.nombre %> <%= user.apellido %></td>
         <td><%= user.tipo %></td>
         <td><%= user.created_at.strftime("%d-%m-%Y") %></td>
-        <td><a class="btn btn-success" href=<%=edit_user_path(user.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
-        <td><a class="btn btn-danger" data-confirm="Are you sure?" data-method="delete" href=<%=user_path(user.id)%>><i class="icon-trash icon-white"></i> Borrar </a></td>
+        <td><a class="btn btn-success" id="button" href=<%=edit_user_path(user.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
+        <td><a class="btn btn-danger" id="button" data-confirm="Are you sure?" data-method="delete" href=<%=user_path(user.id)%>><i class="icon-trash icon-white"></i> Borrar </a></td>
       </tr>
     </tbody>
     <% end %>
   </table>
 
-  <a class="btn btn-inverse" href=<%=root_url%>><i class="icon-arrow-left icon-white"></i> Inicio </a>
-  <a class="btn btn-primary" href=<%=new_user_path%>> Nuevo Usario </a>
+  <a class="btn btn-inverse" id="button" href=<%=root_url%>><i class="icon-arrow-left icon-white"></i> Inicio </a>
+  <a class="btn btn-primary" id="button" href=<%=new_user_path%>> Nuevo Usario </a>
   <br>
 </div>
 <div class="final"><br></div>

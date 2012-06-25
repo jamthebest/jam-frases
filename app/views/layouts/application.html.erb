@@ -31,7 +31,10 @@
         </a>
         <a class="brand" href="/">JAM-Exprésate</a>
         <div class="nav-collapse">
-          <ul class="nav pull-right">
+          <form class="navbar-search pull-left">
+            <input type="text" class="search-query" placeholder="Search">
+          </form>
+          <ul class="nav pull-right" id="bar">
           	<% unless logged_in? %>
   						<li><%= link_to "Nueva Cuenta", signup_path %></li>
   						<li><%= link_to "Autenticar", login_path %></li>

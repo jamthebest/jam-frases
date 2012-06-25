@@ -1,5 +1,5 @@
 <div class="inicio">
-  <h1 class="titulo">Frases XD</h1><br>
+  <h1 class="titulo">Exprésate XD</h1><br>
 </div>
 <div class="tabla">
 <table class="table table-striped">
@@ -21,7 +21,7 @@
       <td><%= frase.autor %></td>
       <td><%= Frase.find(frase.id).descripcion.slice(0..40) %></td>
       <td><%= link_to "#{User.find(frase.user_id).username}", user_path(frase.user_id) %></td>
-      <td><a class="btn btn-info" href=<%=frase_path(frase.id)%>><i class="icon-eye-open icon-black"></i> Mostrar </a></td>
+      <td><a class="btn btn-info" id="button" href=<%=frase_path(frase.id)%>><i class="icon-eye-open icon-black"></i> Mostrar </a></td>
     </tr>
   </tbody>
   <% end %>
@@ -30,7 +30,7 @@
 
 
 <br>
-<br><a class="btn btn-inverse" href=<%=root_url%>><i class="icon-home icon-white"></i> Inicio </a>
-<a class="btn btn-primary" href=<%=new_frase_path%>> Agregar Frase </a><br>
+<br><a class="btn btn-inverse" id="button" href=<%=root_url%>><i class="icon-home icon-white"></i> Inicio </a>
+<a class="btn btn-primary" id="button" href=<%=new_frase_path%>> Expresarme! </a><br>
 </div>
 <div class="final"><br></div>

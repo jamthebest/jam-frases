@@ -3,7 +3,12 @@
   <br><strong>Username:</strong>
   <%= @user.username %>
 </p>
-
+Avatar:
+<% if @user.photo.exists? then %>
+  <%= image_tag @user.photo.url(:small) %>
+<%else%>
+  Ninguna Foto
+<% end %>
 <div class="noti">
   <% if logged_in? && current_user.id == @user.id %>
     <a class="btn btn-warning" id="button" href=<%=notifications_path%>><i class="icon-search icon-white"></i> Notificaciones </a>

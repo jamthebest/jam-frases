@@ -1,5 +1,6 @@
 <div class="userform">
 <%= simple_form_for(@user) do |f| %>
+  <%= f.file_field :photo %>
   <%= f.input :nombre %>
   <%= f.input :apellido %>
   <%= f.input :fecha_nac, :label =>'Fecha de Nacimiento', :as => :date, :start_year => Date.today.year - 100,

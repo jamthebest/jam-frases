@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @search = Frase.search(params[:search])
     @users = User.all
     respond_to do |format|
       format.html
@@ -8,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @search = Frase.search(params[:search])
     @user = User.find(params[:id])
     @review = Review.new
     @notification = Notification.new
@@ -18,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    @search = Frase.search(params[:search])
     if !(logged_in?)
       @user = User.new
       respond_to do |format|
@@ -50,6 +53,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @search = Frase.search(params[:search])
     @user = User.find(params[:id])
   end
 

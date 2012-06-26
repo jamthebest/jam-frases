@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   def index
+    @search = Frase.search(params[:search])
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @notifications = Notification.where para: current_user.id
       respond_to do |format|
@@ -18,6 +19,7 @@ class NotificationsController < ApplicationController
   end
 
   def show
+    @search = Frase.search(params[:search])
     if logged_in? && ((current_user.id == Notification.find(params[:id]).para && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
       @notification = Notification.find(params[:id])
       @notification[:leido] = true
@@ -39,6 +41,7 @@ class NotificationsController < ApplicationController
   end
 
   def new
+    @search = Frase.search(params[:search])
     if logged_in? && (current_user.tipo.eql? "Administrador")
       @notification = Notification.new
       respond_to do |format|

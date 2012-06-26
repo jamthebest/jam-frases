@@ -32,7 +32,9 @@
         <a class="brand" href="/">JAM-Exprésate</a>
         <div class="nav-collapse">
           <form class="navbar-search pull-left">
-            <input type="text" class="search-query" placeholder="Search">
+            <%= simple_form_for @search do |f| %>
+              <%= f.text_field :descripcion_contains %>
+            <% end %>
           </form>
           <ul class="nav pull-right" id="bar">
           	<% unless logged_in? %>

@@ -16,4 +16,8 @@ class SessionsController < ApplicationController
     flash[:notice] = "Logged out!"
     redirect_to root_url
   end
+
+  def new
+    @search = Frase.search(params[:search])
+  end
 end

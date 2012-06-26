@@ -1,2 +1,6 @@
-<h1>Busqueda#new</h1>
-<p>Find me in app/views/busqueda/new.html.erb</p>
+<% form_tag frases_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :autor => nil %>
+  </p>
+<% end %>

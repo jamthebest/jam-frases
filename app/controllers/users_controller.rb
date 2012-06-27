@@ -1,10 +1,19 @@
 class UsersController < ApplicationController
   def index
     @search = Frase.search(params[:search])
-    @users = User.all
-    respond_to do |format|
-      format.html
-      format.json { render json: @users }
+    if logged_in? && (current_user.tipo.eql? "Administrador")
+      @users = User.all
+      respond_to do |format|
+        format.html
+        format.json { render json: @users }
+      end
+    else
+      flash[:error] = 'No tienes derechos de Administrador!'
+      if !(logged_in?)
+        redirect_to login_path
+      else
+        redirect_to root_url
+      end
     end
   end
 

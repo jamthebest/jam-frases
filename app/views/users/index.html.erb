@@ -7,6 +7,7 @@
     <thead>
       <tr>
         <th>#</th>
+        <th>Foto</th>
         <th>Email</th>
         <th>Username</th>
         <th>Nombre</th>
@@ -20,6 +21,7 @@
     <tbody>
       <tr>
         <td><%= user.id %></td>
+        <td><%= image_tag user.photo.url(:index) %></td>
         <td><%= user.email %></td>
         <td><%= link_to user.username, user_path(user) %></td>
         <td><%= user.nombre %> <%= user.apellido %></td>

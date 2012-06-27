@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if !(logged_in?)
       @user = User.new(params[:user])
       respond_to do |format|
-        if @user.save
+       if @user.save
           session[:user_id] = @user.id
           format.html { redirect_to @user, notice: 'Usuario Creado!' }
           format.json { render json: @user, status: :created, location: @user }
@@ -82,7 +82,7 @@ class UsersController < ApplicationController
     if (current_user.id == User.find(params[:id])) || (current_user.tipo.eql? "Administrador")
       @user = User.find(params[:id])
       @user.destroy
-      flash[:notice] = 'Usuario Eliminado'
+
       respond_to do |format|
         format.html { redirect_to users_path }
         format.json { head :no_content }

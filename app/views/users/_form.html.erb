@@ -1,6 +1,5 @@
 <div class="userform">
 <%= simple_form_for(@user) do |f| %>
-  <%= f.file_field :photo %>
   <%= f.input :nombre %>
   <%= f.input :apellido %>
   <%= f.input :fecha_nac, :label =>'Fecha de Nacimiento', :as => :date, :start_year => Date.today.year - 100,
@@ -15,6 +14,7 @@
   <% else %>
     <%= hidden_field_tag(:tipo, "Usuario") %>
   <% end %>
+  Foto de Perfil: <%= f.file_field :photo %><br><br>
   <input class="btn btn-primary" id="button" type="submit" value="Listo!">
 <% end %>
 </div>

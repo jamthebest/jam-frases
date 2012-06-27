@@ -127,6 +127,30 @@ div.user{
 	font-size: 120%;
 }
 
+.titulouser{
+	width: 400px;
+	float: right;
+	text-align: center;
+	margin-top: 80px;
+	margin-right: 130px;
+	padding: 0px 40px 15px 0px;
+	font-size: 40px;
+	background-color: #F2F2F2;
+	border-radius: 5px;
+	font-family: 'Bilbo Swash Caps', cursive;
+}
+
+.foto{
+	width: 200px;
+	height: 200px;
+	background-image:url(foto.png);
+	border: 10px outset #cccccc;
+	min-height: 10em;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle
+}
+
 /*Estos metodos sirven para User - Notificaiones y Frases*/
 h1.titulo{
 	font-family: 'Fredericka the Great', cursive;
@@ -166,7 +190,7 @@ div.autent{
 	padding: 10px 60px 10px 80px;
 }
 
-p.titulo {  	
+p.titulo{  	
 	width: 600px;
 	text-align: center;
 	margin-top: 40px;

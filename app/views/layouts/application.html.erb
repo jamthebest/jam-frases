@@ -31,11 +31,6 @@
         </a>
         <a class="brand" href="/">JAM-Exprésate</a>
         <div class="nav-collapse">
-          <form class="navbar-search pull-left">
-            <%= simple_form_for @search do |f| %>
-              <%= f.text_field :descripcion_contains %>
-            <% end %>
-          </form>
           <ul class="nav pull-right" id="bar">
           	<% unless logged_in? %>
   						<li><%= link_to "Nueva Cuenta", signup_path %></li>
@@ -50,7 +45,11 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="face">
+    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fjamthebest221&amp;width=150&amp;height=290&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:290px;" allowTransparency="true"></iframe>
+  </div>
+
+  <div class="container" id="conteni">
     <% if flash[:notice] %>
       <div class="alert alert-success">
         <a class="close" data-dismiss="alert">×</a>
@@ -64,6 +63,13 @@
       </div>
     <% end %>
     <%= yield %>
+  </div>
+  <div class="cont">
+    <!--************CODE GEOCLOCK************-->
+    <script type="text/javascript" src="http://geoloc8.geo20120530.com/private/geoclock.js?compte=846606968332"></script>
+    <noscript>
+    <a href="http://www.geovisites.com/es/directory/informatica_formato-para-datos.php" target="_blank"><img src="http://geoloc8.geo20120530.com/private/geoclock.php?compte=846606968332" border="0" alt="formato para datos"></a></noscript>
+    <!--************END CODE GEOCLOCK************-->
   </div>
 </body>
 </html>

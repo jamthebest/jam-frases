@@ -31,7 +31,6 @@ class FrasesController < ApplicationController
   end
 
   def new
-    @search = Frase.search(params[:search])
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @frase = Frase.new
       respond_to do |format|
@@ -72,7 +71,6 @@ class FrasesController < ApplicationController
   end
 
   def edit
-    @search = Frase.search(params[:search])
     if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
       @frase = Frase.find(params[:id])
       respond_to do |format|
@@ -91,7 +89,6 @@ class FrasesController < ApplicationController
   end
 
   def show
-    @search = Frase.search(params[:search])
     @frase = Frase.find(params[:id])
     @comment = Comment.new
     @notification = Notification.new

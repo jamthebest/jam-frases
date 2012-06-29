@@ -5,10 +5,45 @@ body {
 	background-color:#DCC8B0;
 	margin:0;
 	padding:0;
+	background-image: url(fondo.png);
+}
+
+.face{
+	float: left;
+}
+
+#conteni{
+	width: 900px;
+	float: left;
 }
 
 .session{
 	font-family: 'Gentium Basic', serif;
+}
+
+.terminos{
+	width: 300px;
+	height: 200px;
+	overflow: scroll;
+}
+
+.per{
+	width: 200px;
+	height: 200px;
+	margin-left: 70px
+}
+
+.acerca{
+	margin-left: 25px;
+}
+
+.acerca, .contacto, .gustar, .contador{
+	padding-left: 25px;
+	padding-right: 25px;
+}
+
+.cont{
+	float: left;
 }
 
 .brand{
@@ -22,6 +57,11 @@ body {
 	font-size: 15px;
 }
 
+.pie{
+	height: 15px;
+	margin-top: 50px;
+}
+
 /*Comienza Aplication/Layouts*/
 .ul rig{
 	float: right;
@@ -30,17 +70,27 @@ body {
 /*Home*/
 
 div.principal{
-	margin: 120px 0px 0px 45px;
+	margin: 100px 0px 0px 45px;
 	padding: 0px 0px 0px 110px;
 }
 
-div.texto{
+div.principal2{
+	margin: 100px 0px 0px 45px;
+	padding: 0px 0px 0px 90px;
+}
+
+div.texto, .texto2{
 	font-family: 'Gentium Basic', serif;
-	font-size: 13px;
-	margin-right: 185px;
+	font-size: 20px;
+	margin-right: 260px;
 	float: right;
 	border-left: 1px solid #B6B6B6;
 	padding-left: 40px;
+}
+
+div.texto2{
+	margin-right: 140px;
+	margin-bottom: 50px;
 }
 
 .jam{
@@ -52,9 +102,14 @@ b{ 	font-size: 14px	}
 p{ 	text-align: justify;	}
 h1{ 	font-size: 48px; text-align: center; }
 
-div#content1{
+div#content1, div#content2{
 	margin-top: 22px;
 	padding-left: 200px;
+	height: 130px;
+}
+
+div#content2{
+	padding-left: 130px;
 }
 
 div.icono{
@@ -67,30 +122,15 @@ div.icono{
 
 /*Frase - show*/
 
-div.arriba,div.abajo,div.centro{
-	background-repeat: no-repeat;
-	background-position: center top;
-	font-size: 130%;
-	text-align:center;
-	border: 0px solid black;
-}
-div.arriba{
-	background-image:url(arriba.jpg);
-	padding-top: 120px;
-	margin-left: 22px;
-}
 div.centro{
+	background-position: center top;
 	background-image:url(Body.jpg);
 	background-repeat: repeat-y;
 	margin-top: -10px;
-	padding: 20px 170px 50px 160px;
+	padding: 60px 170px 50px 160px;
 	margin-left: 37px;
-}
-div.abajo{
-	background-image:url(abajo.jpg);
-	background-position:center bottom;
-	height: 120px;
-	margin-top: -48px;
+	text-align:center;
+	border: 0px solid black;
 }
 
 #subido{

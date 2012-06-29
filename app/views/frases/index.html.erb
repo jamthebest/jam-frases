@@ -1,3 +1,9 @@
+<div class="busqueda">
+  <%= simple_form_for @search do |f| %>
+    <%= f.text_field :descripcion_contains, :placeholder => 'Expresión a Buscar' %>
+    <input class="btn btn-success" id="button" type="submit" value="Buscar!">
+  <% end %>
+</div>
 <div class="inicio">
   <h1 class="titulo">Exprésate XD</h1><br>
 </div>

@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
   def index
-  	@search = Frase.search(params[:search])
+  end
+
+  def about
+  end
+
+  def contact
   end
 end

@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
     current_user != nil
   end
 
-  helper_method :current_user, :logged_in?
+  def search
+  	@search = Frase.search(params[:search])
+  end
+
+  helper_method :current_user, :logged_in?, :search
 end

@@ -10,15 +10,21 @@ body {
 
 .face{
 	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 #conteni{
-	width: 900px;
+	width: 890px;
 	float: left;
+	margin-right: 5px;
 }
 
 .session{
+	margin-top: 50px;
+	margin-left: 30%;
 	font-family: 'Gentium Basic', serif;
+	height: 400px;
 }
 
 .terminos{
@@ -70,19 +76,19 @@ body {
 /*Home*/
 
 div.principal{
-	margin: 100px 0px 0px 45px;
-	padding: 0px 0px 0px 110px;
+	margin: 11% 0px 0px 5%;
+	padding: 0px 0px 0px 12%;
 }
 
 div.principal2{
-	margin: 100px 0px 0px 45px;
-	padding: 0px 0px 0px 90px;
+	margin: 11% 0px 0px 5%;
+	padding: 0px 0px 0px 10%;
 }
 
 div.texto, .texto2{
 	font-family: 'Gentium Basic', serif;
 	font-size: 20px;
-	margin-right: 260px;
+	margin-right: 35%;
 	float: right;
 	border-left: 1px solid #B6B6B6;
 	padding-left: 40px;
@@ -96,6 +102,9 @@ div.texto2{
 .jam{
 	font-size: 35px;
 	font-family: 'Fredericka the Great', cursive;
+	text-align: center;
+	margin-left: 30px;
+	float: left;
 }
 
 b{ 	font-size: 14px	}
@@ -108,16 +117,13 @@ div#content1, div#content2{
 	height: 130px;
 }
 
-div#content2{
-	padding-left: 130px;
-}
-
 div.icono{
 	background-image:url(Jam-4.png);
 	background-repeat: no-repeat;
 	background-position: center right;
 	width: 200px;
 	height: 200px;
+	margin-left: 15px;
 }
 
 /*Frase - show*/

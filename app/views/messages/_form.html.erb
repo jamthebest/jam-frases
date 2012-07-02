@@ -1,0 +1,6 @@
+<%= simple_form_for @message, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :para, :as => :string, :placeholder => 'Nombre de usuario' %>
+  <%= f.input :asunto %>
+  <%= f.input :content, :label => 'Mensaje', :as => :text, :input_html => { :rows => 7, :class => 'resizable' }, :placeholder => 'Escribe tu Mensaje' %><br>
+  <input class="btn btn-primary" id="button" type="submit" value="Enviar!">
+<% end %>

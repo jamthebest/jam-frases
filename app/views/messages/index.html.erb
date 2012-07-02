@@ -1,0 +1,42 @@
+<div class="inicio">
+  <h1 class="titulo">Mensajes</h1><br>
+</div>
+
+<div class="tabla">
+<%- model_class = Message.new.class -%>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Asunto</th>
+      <th>Descripción</th>
+      <th>De</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.tipo %></td>
+        <td><strong><%= (message.content.slice(0..20) + (!message.leido ? " (Nuevo)" : "" )) %></strong></td>
+        <td><%= link_to User.find(message.de).username, user_path(message.de) %></td>
+        <td><%= message.created_at.strftime("%d-%m-%Y") %></td>
+        <td><a class="btn btn-info" id="button" href=<%=message_path(message.id)%>><i class="icon-search icon-white"></i> Ver </a>
+          <%= link_to t('.destroy', :default => t("helpers.links.Eliminar")),
+                      message_path(message),
+                      :method => :delete,
+                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => '¿Seguro?')),
+                      :class => 'btn btn-danger',
+                      :id => "button" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<a class="btn btn-inverse" id="button" href=<%=user_path(current_user.id)%>><i class="icon-arrow-left icon-white"></i> Perfil </a>
+<a class="btn btn-primary" id="button" href=<%=new_message_path%>> Nuevo Mensaje </a>
+<a class="btn btn-primary" id="button" href=<%=new_frase_path%>> Expresarme! </a><br>
+<br>
+</div>
+<div class="final"><br></div>

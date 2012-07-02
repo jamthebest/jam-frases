@@ -32,7 +32,12 @@
 <% if !current_user || current_user.id != @user.id %></p>
   <p><strong class="datos">Nombre:</strong> <%=@user.nombre%> <%=@user.apellido%></p>
   <p><strong class="datos">Fecha de Nacimiento:</strong> <%=@user.fecha_nac.strftime("%d-%m-%Y")%></p>
-  <p><strong class="datos">E-mail:</strong> <%=@user.email%><hr>
+  <p><strong class="datos">E-mail:</strong> <%=@user.email%></p>
+  <%= simple_form_for @message do |f| %>
+    <%= hidden_field_tag(:para, @user.id) %>
+  <% end %>
+  <p><a class="btn btn-primary" id="button" href=<%=new_message_path%>> Enviar Mensaje </a></p>
+  <hr>
   <p><h3 id="cont">Expresiones:</h3></p>
   <div class="lista"> 
     <ol>

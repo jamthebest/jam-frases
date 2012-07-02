@@ -1,0 +1,17 @@
+<% if @message.errors.any? %>
+<div class="alert alert-error">
+  <a class="close" data-dismiss="alert">×</a>
+	<% if @message.errors.any? %>
+	  <div id="error_explanation">
+	      <% @message.errors.full_messages.each do |msg| %>
+	        <%= msg %>
+	      <% end %>
+	  </div>
+	<% end %>
+</div>
+<% end %>
+<div class="autent">
+	<h1 class="titulo"> Nuevo Mensaje </h1>
+	<%= render 'form'%> 
+	<a class="btn btn-inverse" id="button" href=<%=messages_path%>><i class="icon-arrow-left icon-white"></i> Mensajes </a>
+</div>

@@ -48,6 +48,10 @@ body {
 	padding-right: 25px;
 }
 
+.move{
+	width: 150px;
+}
+
 .cont{
 	float: left;
 }

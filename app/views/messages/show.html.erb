@@ -1,0 +1,24 @@
+<%- model_class = @message.class -%>
+<div class="page-header">
+  <h1>Mensaje</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:de) %>:</strong></dt>
+  <dd><%= link_to User.find(@message.de).username, user_path(@message.de) %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:asunto) %>:</strong></dt>
+  <dd><%= @message.asunto %></dd>
+  <dt><strong>Mensaje:</strong></dt>
+  <dd><%= @message.content %></dd>
+  
+</dl>
+
+<div class="form-actions">
+  <a class="btn btn-inverse" id="button" href=<%=messages_path%>><i class="icon-arrow-left icon-white"></i> Atrás </a>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              message_path(@message),
+              :method => 'delete',
+              :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+              :class => 'btn btn-danger',
+              :id => "button" %>
+</div>

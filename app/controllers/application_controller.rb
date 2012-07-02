@@ -11,8 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def noti
-  	@noti = (Notification.where para: current_user) and (Notification.where leido: false)
+  	@noti = (Notification.where para: current_user).where leido: false
   end
 
-  helper_method :current_user, :logged_in?, :noti
+  def messa
+    @messa = (Message.where para: current_user).where leido: false
+  end
+
+  helper_method :current_user, :logged_in?, :noti, :messa
 end

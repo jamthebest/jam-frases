@@ -64,7 +64,7 @@
           <%= simple_form_for @notification do |f| %>
             <%= hidden_field_tag(:para, 1) %>
             <%= hidden_field_tag(:tipo, 1) %>
-            <%= hidden_field_tag(:contenido, ("Comentario Indevido : " + comment.contenido + "\nUsuario: " + User.find(comment.user_id).username + "\nPara: " + @user.username).to_s) %>
+            <%= hidden_field_tag(:contenido, ("Comentario Indevido : " + comment.contenido + "  Usuario: " + User.find(comment.user_id).username + "   De: " + (logged_in? ? (current_user.username) : "Invitado")).to_s) %>
             <input class="btn btn-primary" id="button" type="submit" value="Reportar">
           <% end %>
         </div>

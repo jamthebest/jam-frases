@@ -31,6 +31,12 @@
         </a>
         <a class="brand" href="/">JAM-Exprésate</a>
         <div class="nav-collapse">
+          <ul class="nav">
+            <% if logged_in? %>
+            <li><a href=<%=notifications_path %>><i class="icon-globe icon-white"></i> <%=noti.size%></a></li>
+            <li><a href=<%=messages_path%>><i class="icon-envelope icon-white"></i></a></li>
+            <% end %>
+          </ul>
           <ul class="nav pull-right" id="bar">
           	<% unless logged_in? %>
   						<li><%= link_to "Nueva Cuenta", signup_path %></li>

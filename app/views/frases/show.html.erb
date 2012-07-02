@@ -8,8 +8,13 @@
   <% if logged_in? && (current_user.id == @frase.user_id || (current_user.tipo.eql? "Administrador")) %>
     <a class="btn btn-danger" id="button" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
     <a class="btn btn-success" id="button" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
+  <% end %><br><br>
+  <%= simple_form_for @notification do |f| %>
+    <%= hidden_field_tag(:para, 1) %>
+    <%= hidden_field_tag(:tipo, 1) %>
+    <%= hidden_field_tag(:contenido, ("Frase Indevida : " + @frase.descripcion + "  Usuario: " + User.find(@frase.user_id).username + "   De: " + (logged_in? ? (current_user.username) : "Invitado")).to_s) %>
+    <input class="btn btn-primary" id="button" type="submit" value="Reportar Frase">
   <% end %>
-
   <p>
     <%= simple_form_for @comment do |f| %>
       <%= "Comente Esta Frase XD" %>
@@ -26,6 +31,14 @@
     <ul id="review_list">
       <h4><%= link_to "#{User.find(comment.user_id).username}", user_path(comment.user_id) %> escribió:</h4>
         <p><h5><%= comment.contenido %></h5></p>
+        <div class="reporte" >
+          <%= simple_form_for @notification do |f| %>
+            <%= hidden_field_tag(:para, 1) %>
+            <%= hidden_field_tag(:tipo, 1) %>
+            <%= hidden_field_tag(:contenido, ("Comentario Indevido : " + comment.contenido + "  Usuario: " + User.find(comment.user_id).username + "   De: " + (logged_in? ? (current_user.username) : "Invitado")).to_s) %>
+            <input class="btn btn-primary" id="button" type="submit" value="Reportar">
+          <% end %>
+        </div>
     </ul>
   <% end %>
 </div>

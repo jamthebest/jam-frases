@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
     current_user != nil
   end
 
-  def search
-  	@search = Frase.search(params[:search])
+  def noti
+  	@noti = (Notification.where para: current_user) and (Notification.where leido: false)
   end
 
-  helper_method :current_user, :logged_in?, :search
+  helper_method :current_user, :logged_in?, :noti
 end

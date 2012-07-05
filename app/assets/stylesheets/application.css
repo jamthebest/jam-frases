@@ -22,9 +22,9 @@ body {
 
 .session{
 	margin-top: 50px;
-	margin-left: 30%;
+	text-align: center;
 	font-family: 'Gentium Basic', serif;
-	height: 400px;
+	height: 300px;
 }
 
 .terminos{
@@ -39,13 +39,14 @@ body {
 	margin-left: 70px
 }
 
-.acerca{
-	margin-left: 25px;
-}
-
 .acerca, .contacto, .gustar, .contador{
 	padding-left: 25px;
 	padding-right: 25px;
+}
+
+.comeface{
+	height: 100%;
+	text-align: center;
 }
 
 .move{
@@ -69,7 +70,7 @@ body {
 
 .pie{
 	height: 15px;
-	margin-top: 50px;
+	text-align: center;
 }
 
 /*Comienza Aplication/Layouts*/
@@ -80,7 +81,7 @@ body {
 /*Home*/
 
 div.principal{
-	margin: 11% 0px 0px 5%;
+	margin: 8% 0px 0px 5%;
 	padding: 0px 0px 0px 12%;
 }
 
@@ -118,7 +119,7 @@ h1{ 	font-size: 48px; text-align: center; }
 div#content1, div#content2{
 	margin-top: 22px;
 	padding-left: 200px;
-	height: 130px;
+	height: 60px;
 }
 
 div.icono{

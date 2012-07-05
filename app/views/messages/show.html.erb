@@ -7,13 +7,19 @@
   <dt><strong><%= model_class.human_attribute_name(:de) %>:</strong></dt>
   <dd><%= link_to User.find(@message.de).username, user_path(@message.de) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:asunto) %>:</strong></dt>
-  <dd><%= @message.asunto %></dd>
+  <dd><%= @message.asunto ? @message.asunto : "Sin Asunto" %></dd>
   <dt><strong>Mensaje:</strong></dt>
   <dd><%= @message.content %></dd>
   
 </dl>
 
 <div class="form-actions">
+  <%= simple_form_for @mensaje do |f| %>
+    <%= hidden_field_tag(:seguir, true) %>
+    <%= hidden_field_tag(:para, User.find(@message.de).username) %>
+    <%= hidden_field_tag(:asunto, "Res: "+ @message.asunto) %>
+    <input class="btn btn-primary" id="button" type="submit" value="Responder">
+  <% end %>
   <a class="btn btn-inverse" id="button" href=<%=messages_path%>><i class="icon-arrow-left icon-white"></i> Atrás </a>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               message_path(@message),

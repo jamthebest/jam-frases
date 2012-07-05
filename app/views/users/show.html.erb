@@ -34,9 +34,10 @@
   <p><strong class="datos">Fecha de Nacimiento:</strong> <%=@user.fecha_nac.strftime("%d-%m-%Y")%></p>
   <p><strong class="datos">E-mail:</strong> <%=@user.email%></p>
   <%= simple_form_for @message do |f| %>
-    <%= hidden_field_tag(:para, @user.id) %>
+    <%= hidden_field_tag(:seguir, true) %>
+    <%= hidden_field_tag(:para, @user.username) %>
+    <input class="btn btn-primary" id="button" type="submit" value="Enviar Mensaje">
   <% end %>
-  <p><a class="btn btn-primary" id="button" href=<%=new_message_path%>> Enviar Mensaje </a></p>
   <hr>
   <p><h3 id="cont">Expresiones:</h3></p>
   <div class="lista"> 

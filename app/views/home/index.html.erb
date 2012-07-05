@@ -3,7 +3,7 @@
 	<p>
 		<br><br><br><br><br>
 		Comparte lo que sientes!!!
-		<br><br><br><br><br>
+		<br><br><br><br><br><br>
 	</p>
 	</div><br>
 	<h1 class="jam">JAM-<br>Exprésate</h1><br><br><br>
@@ -13,11 +13,22 @@
 	</div>
 </div>
 <div class="pie">
+	<div class="comeface">
+		<div class="fb-comments" data-href="https://www.facebook.com/jamthebest221" data-num-posts="3" data-width="450"></div>
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+	  	var js, fjs = d.getElementsByTagName(s)[0];
+	  	if (d.getElementById(id)) return;
+	  	js = d.createElement(s); js.id = id;
+	  	js.src = "//connect.facebook.net/es_LA/all.js#xfbml=1";
+	  	fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>
+	</div><br><br><br><br><br><br>
     <b class="acerca"><%= link_to "Acerca de Mí", about_path %></b>
     <b class="contacto"><%= link_to "Contáctanos", contact_path %></b>
     <b class="contador">
     	<!-- Codigo contadorvisitas.com ver. 4.3 -->
 			<script language="javascript" src="http://aux01.contadorgratis.com/hitv4.php?digit=blgrv&page=08c0308eda7751a2930d62e126e57f53"></script>
 			<!-- FIN Codigo contadorvisitas.com --></b>
-		
-  </div>
+		<b class="acerca"><%= link_to "Recomendación", recomendacion_path %></b>
+</div>

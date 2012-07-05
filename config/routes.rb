@@ -15,6 +15,7 @@ Frases::Application.routes.draw do
   get 'logout', to: 'sessions#destroy', as: 'logout'
   get 'about', to: 'home#about', as: 'about'
   get 'contact', to: 'home#contact', as: 'contact'
+  get 'recomendacion', to: 'messages#recomendacion', as: 'recomendacion'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

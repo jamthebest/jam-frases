@@ -1,0 +1,34 @@
+<div class="inicio">
+  <h1 class="titulo">Ranking XD</h1><br>
+</div>
+<div class="tabla">
+		<table class="table table-striped">
+	    <thead>
+	      <tr>
+	        <th>Posición</th>
+	        <th>Frase</th>
+	        <th>Autor</th>
+	        <th>Usuario</th>
+	        <th>Votos</th>
+	      </tr>
+	    </thead>
+	    <% cont = 1 %>
+	    <% @frases.each do |frase| %>
+	    <tbody>
+	      <tr>
+	        <td><%= cont %></td>
+	        <td><%= link_to frase.descripcion.slice(0..40) + ((Frase.find(frase.id).descripcion.size > 40) ? "..." : ""), frase_path(frase) %></td>
+	        <td><%= frase.autor %></td>
+	        <td><%= link_to User.find(frase.user_id).username, user_path(frase.user_id) %></td>
+	        <td><%= frase.likes %></td>
+	      </tr>
+	    </tbody>
+	    <% cont += 1%>
+	    <% end %>
+  	</table>
+
+<br>
+<br><a class="btn btn-inverse" id="button" href=<%=root_url%>><i class="icon-home icon-white"></i> Inicio </a>
+<a class="btn btn-primary" id="button" href=<%=new_frase_path%>> Expresarme! </a><br>
+</div>
+<div class="final"><br></div>

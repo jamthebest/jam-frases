@@ -33,6 +33,8 @@ class FrasesController < ApplicationController
   def new
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @frase = Frase.new
+      @frase[:likes] = 0
+      @frase[:user_likes] = ""
       respond_to do |format|
         format.html
         format.json { render json: @frase }
@@ -49,23 +51,31 @@ class FrasesController < ApplicationController
   end
 
   def update
-    if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
-      @frase = Frase.find(params[:id])
-      if @frase.update_attributes(params[:frase])
-        respond_to do |format|
-          format.html { redirect_to @frase, flash[:notice] = 'Frase Actualizada!' }
-          format.json { render json: @frase, status: :created, location: @frase }
+    @frase = Frase.find(params[:id])
+    if params[:like]
+      @frase[:likes] += 1
+      @frase[:user_likes] = (current_user.id.to_s + ",")
+      flash[:notice] = "Has votado por esta frase!"
+      @frase.update_attributes(params[:frase])
+      redirect_to @frase
+    else
+      if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
+        if @frase.update_attributes(params[:frase])
+          respond_to do |format|
+            format.html { redirect_to @frase, flash[:notice] = 'Frase Actualizada!' }
+            format.json { render json: @frase, status: :created, location: @frase }
+          end
+        else
+          render action: "edit"
         end
       else
-        render action: "edit"
-      end
-    else
-      if !logged_in? || (current_user.id != Frase.find(params[:id]).user_id)
-        flash[:error] = "No tienes Permiso para editar esta Frase!"
-        redirect_to login_path
-      else
-        flash[:error] = "Usuario Bloqueado por Administrador!"
-        redirect_to root_url
+        if !logged_in? || (current_user.id != Frase.find(params[:id]).user_id)
+          flash[:error] = "No tienes Permiso para editar esta Frase!"
+          redirect_to login_path
+        else
+          flash[:error] = "Usuario Bloqueado por Administrador!"
+          redirect_to root_url
+        end
       end
     end
   end

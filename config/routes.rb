@@ -16,6 +16,7 @@ Frases::Application.routes.draw do
   get 'about', to: 'home#about', as: 'about'
   get 'contact', to: 'home#contact', as: 'contact'
   get 'recomendacion', to: 'messages#recomendacion', as: 'recomendacion'
+  get 'ranking', to: 'home#ranking', as: 'ranking'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

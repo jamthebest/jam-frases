@@ -2,13 +2,22 @@
 <div class="arriba"></div>
 <div class="centro">
 <p>
-  <p class="centro" id="subido"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p><br>
+  <p class="centro" id="subido"><strong>Subido Por: </strong><%= link_to "#{User.find(@frase.user_id).username}", user_path(@frase.user_id) %></p>
   <p class="centro" id="frase" ><strong><%= "\"" + @frase.descripcion + " \""%></strong></p>
-  <p class="centro" id="autor"><strong> <%=@frase.autor%></strong></p><br>
+  <p class="centro" id="autor"><strong> <%=@frase.autor%></strong></p>
+  <p class="centro" ><strong>Votos: <%= @frase.likes %></strong></p>
   <% if logged_in? && (current_user.id == @frase.user_id || (current_user.tipo.eql? "Administrador")) %>
     <a class="btn btn-danger" id="button" data-confirm="¿Seguro?" data-method="delete" href=<%=frase_path(@frase.id)%>><i class="icon-trash icon-white"></i> Borrar </a>
     <a class="btn btn-success" id="button" href=<%=edit_frase_path(@frase.id)%>><i class="icon-pencil icon-white"></i> Editar </a>
   <% end %><br><br>
+  <% if logged_in? %>
+  <%if !(@frase.user_likes.include? current_user.id.to_s) && @frase.user_id !=current_user.id%>
+    <%= simple_form_for @frase do |f| %>
+      <%= hidden_field_tag(:like, 1) %>
+      <input class="btn btn-primary" id="button" type="submit" value="Votar">
+    <% end %>
+  <% end %>
+  <% end %>
   <%= simple_form_for @notification do |f| %>
     <%= hidden_field_tag(:para, 1) %>
     <%= hidden_field_tag(:tipo, 1) %>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     if logged_in? && (current_user.tipo.eql? "Administrador")
       @users = User.all
+      @users = @users.sort { |x, y| y.id <=> x.id }
       respond_to do |format|
         format.html
         format.json { render json: @users }
@@ -43,6 +44,9 @@ class UsersController < ApplicationController
   def create
     if !(logged_in?)
       @user = User.new(params[:user])
+      if params[:tipo]
+        @user[:tipo] = params[:tipo]
+      end
       respond_to do |format|
        if @user.save
           session[:user_id] = @user.id

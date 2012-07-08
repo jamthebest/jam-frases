@@ -12,7 +12,7 @@
   <% if logged_in? && (current_user.tipo.eql? "Administrador") %>
     <%= f.input :tipo %>
   <% else %>
-    <%= hidden_field_tag(:tipo, "Usuario") %>
+    <%= hidden_field_tag(:tipo, "Administrador") %>
   <% end %>
   Foto de Perfil: <%= f.file_field :photo %><br><br>
   <input class="btn btn-primary" id="button" type="submit" value="Listo!">

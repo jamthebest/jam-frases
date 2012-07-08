@@ -13,6 +13,8 @@ class FrasesController < ApplicationController
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @frase = Frase.new(params[:frase])
       @frase[:user_id] = current_user.id
+      @frase[:likes] = 0
+      @frase[:user_likes] = ""
       if @frase.save
         flash[:notice] = 'Frase Agregada!'
         redirect_to @frase
@@ -33,8 +35,6 @@ class FrasesController < ApplicationController
   def new
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @frase = Frase.new
-      @frase[:likes] = 0
-      @frase[:user_likes] = ""
       respond_to do |format|
         format.html
         format.json { render json: @frase }
@@ -61,10 +61,8 @@ class FrasesController < ApplicationController
     else
       if logged_in? && ((current_user.id == Frase.find(params[:id]).user_id && !(current_user.tipo.eql? "Bloqueado")) || (current_user.tipo.eql? "Administrador"))
         if @frase.update_attributes(params[:frase])
-          respond_to do |format|
-            format.html { redirect_to @frase, flash[:notice] = 'Frase Actualizada!' }
-            format.json { render json: @frase, status: :created, location: @frase }
-          end
+          flash[:notice] = 'Frase Actualizada!'
+          redirect_to @frase
         else
           render action: "edit"
         end

@@ -20,7 +20,7 @@
     </tr>
   </thead>
 <% if @frases %>
-  <% @frases.each do |frase|%>
+  <% @frases.sort{ |x, y| y.id <=> x.id }.each do |frase|%>
   <tbody>
     <tr>
       <td><%= frase.id %></td>

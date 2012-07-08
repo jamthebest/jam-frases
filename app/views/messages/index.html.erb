@@ -18,7 +18,7 @@
   <tbody>
     <% @messages.each do |message| %>
       <tr>
-        <td><%= (message.asunto.eql? "") ? message.asunto : "Sin Asunto" %></td>
+        <td><%= (message.asunto.eql? "") ? "Sin Asunto" : message.asunto %></td>
         <td><strong><%= (message.content.slice(0..20) + (!message.leido ? " (Nuevo)" : "" )) %></strong></td>
         <td><%= link_to User.find(message.de).username, user_path(message.de) %></td>
         <td><%= message.created_at.strftime("%d-%m-%Y") %></td>

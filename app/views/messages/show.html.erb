@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:de) %>:</strong></dt>
   <dd><%= link_to User.find(@message.de).username, user_path(@message.de) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:asunto) %>:</strong></dt>
-  <dd><%= @message.asunto ? @message.asunto : "Sin Asunto" %></dd>
+  <dd><%= !(@message.asunto.eql? "") ? @message.asunto : "Sin Asunto" %></dd>
   <dt><strong>Mensaje:</strong></dt>
   <dd><%= @message.content %></dd>
   

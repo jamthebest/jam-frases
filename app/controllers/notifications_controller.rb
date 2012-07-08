@@ -2,6 +2,7 @@ class NotificationsController < ApplicationController
   def index
     if logged_in? && !(current_user.tipo.eql? "Bloqueado")
       @notifications = Notification.where para: current_user.id
+      @notifications = @notifications.sort { |x, y| y.id <=> x.id }
       respond_to do |format|
         format.html
         format.json { render json: @notifications }

@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   def index
     if logged_in? && (current_user.tipo.eql? "Administrador")
       @comment = Comment.all
+      @comment= @comment.sort { |x, y| y.id <=> x.id }
       respond_to do |format|
         format.html
         format.json { render json: @comment }

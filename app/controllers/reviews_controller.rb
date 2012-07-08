@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
   def index
     if logged_in? && (current_user.tipo.eql? "Administrador")
       @review = Review.all
+      @review = @review.sort { |x, y| y.id <=> x.id }
       respond_to do |format|
         format.html
         format.json { render json: @review }

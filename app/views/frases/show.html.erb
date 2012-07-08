@@ -14,7 +14,7 @@
   <%if !(@frase.user_likes.include? current_user.id.to_s) && @frase.user_id !=current_user.id%>
     <%= simple_form_for @frase do |f| %>
       <%= hidden_field_tag(:like, 1) %>
-      <input class="btn btn-primary" id="button" type="submit" value="Votar">
+      <input class="btn btn-primary" id="button" type="submit" value="Me gusta">
     <% end %>
   <% end %>
   <% end %>
